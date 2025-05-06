@@ -1,65 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <!-- meta -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cryptobros</title>
-  <!-- styles & fonts -->
-  <link rel="stylesheet" href="styles/main.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-</head>
-<body>
-  <main class="app">
-    <div class="app_coinsButton">
-
-    </div>
-    <article class="app_coinInfo">
-      <section class="app_coinInfo_title">
-        <h1>Bitcoin</h1>
-        <div class="app_coinInfo_title_meta">
-          <p class="app_coinInfo_title_meta_ticker">$BTC</p>
-          <p class="app_coinInfo_title_meta_update">Updated 10m ago</p>
-        </div>
-      </section>
-      <section class="app_coinInfo_market">
-        <h2>CHF 84’439.83</h2>
-        <div class="app_coinInfo_market_trends">
-          <div class="app_coinInfo_market_trends_trend">
-            <p class="app_coinInfo_market_trends_trend_time">24h</p>
-            <div id="coinPerf24h" class="app_coinInfo_market_trends_trend_perf positive">
-              <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" fill="none">
-                <path d="M4.5 0.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M8 4.5L4.5 8.5L1 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <span>-6.13%</span>
-            </div>
-          </div>
-          <div class="app_coinInfo_market_trends_trend">
-            <p class="app_coinInfo_market_trends_trend_time">7d</p>
-            <div id="coinPerf7d" class="app_coinInfo_market_trends_trend_perf negative">
-              <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" fill="none">
-                <path d="M4.5 0.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M8 4.5L4.5 8.5L1 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <span>-21.79%</span>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="app_coinInfo_history">
-        <h3>Market prices in CHF (7d)</h3>
-        <div class="app_coinInfo_history_graph">
-          <canvas id="coinPerfChart"></canvas>
-        </div>
-      </section>
-    </article>
-  </main>
-  <p class="attribution"><a href="https://www.coingecko.com" target="_blank" rel="nofollow">Data from CoinGecko</a></p>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="scripts/chart.js"></script>
-  <script src="scripts/main.js"></script>
-</body>
+    <head>
+        <!-- meta -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Cryptobros</title>
+        <!-- styles & fonts -->
+        <link rel="stylesheet" href="styles/main.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <main class="app">
+            <div class="app_coinsButton"></div>
+            <article class="app_coinInfo">
+                <section class="app_coinInfo_title">
+                    <h1>Bitcoin</h1>
+                    <div class="app_coinInfo_title_meta">
+                        <p class="app_coinInfo_title_meta_ticker">$BTC</p>
+                        <p class="app_coinInfo_title_meta_update">
+                            Updated 10m ago
+                        </p>
+                    </div>
+                </section>
+                <section class="app_coinInfo_market">
+                    <h2>CHF 84’439.83</h2>
+                    <div class="app_coinInfo_market_trends">
+                        <div class="app_coinInfo_market_trends_trend">
+                            <p class="app_coinInfo_market_trends_trend_time">
+                                24h
+                            </p>
+                            <div
+                                id="coinPerf24h"
+                                class="app_coinInfo_market_trends_trend_perf positive"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="9"
+                                    height="9"
+                                    viewBox="0 0 9 9"
+                                    fill="none"
+                                >
+                                    <path
+                                        d="M4.5 0.5V7.5"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                    <path
+                                        d="M8 4.5L4.5 8.5L1 4.5"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                                <span>-6.13%</span>
+                            </div>
+                        </div>
+                        <div class="app_coinInfo_market_trends_trend">
+                            <p class="app_coinInfo_market_trends_trend_time">
+                                7d
+                            </p>
+                            <div
+                                id="coinPerf7d"
+                                class="app_coinInfo_market_trends_trend_perf negative"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="9"
+                                    height="9"
+                                    viewBox="0 0 9 9"
+                                    fill="none"
+                                >
+                                    <path
+                                        d="M4.5 0.5V7.5"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                    <path
+                                        d="M8 4.5L4.5 8.5L1 4.5"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                                <span>-21.79%</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="app_coinInfo_history">
+                    <h3>Market prices in CHF (7d)</h3>
+                    <div class="app_coinInfo_history_graph">
+                        <canvas id="coinPerfChart"></canvas>
+                    </div>
+                </section>
+            </article>
+        </main>
+        <p class="attribution">
+            <a href="https://www.coingecko.com" target="_blank" rel="nofollow"
+                >Data from CoinGecko</a
+            >
+        </p>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="scripts/chart.js"></script>
+        <script src="scripts/main.js"></script>
+    </body>
 </html>

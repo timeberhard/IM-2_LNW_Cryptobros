@@ -1,221 +1,232 @@
 /** Style Reset **/
 
 * {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
 }
 
 /** Default Styles **/
 
 :root {
-  --text: #ffffff;
-  --background: #041726;
-  --negative: #FF0000;
-  --positive: #00A43F;
-  
-  --portrait-size: clamp(300px, 90vw, 600px);
-  --portrait-spacing: clamp(6px, 2vw, 14px);
+    --text: #ffffff;
+    --background: #041726;
+    --negative: #ff0000;
+    --positive: #00a43f;
 
-  --landscape-size: clamp(500px, 90vh, 600px);
-  --landscape-spacing: clamp(12px, 2vh, 14px);
+    --portrait-size: clamp(300px, 90vw, 600px);
+    --portrait-spacing: clamp(6px, 2vw, 14px);
 
-  font-size: 14px;
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
+    --landscape-size: clamp(500px, 90vh, 600px);
+    --landscape-spacing: clamp(12px, 2vh, 14px);
+
+    font-size: 14px;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
 }
 
 body {
-  background-color: var(--background);
+    background-color: var(--background);
 }
 
 h1 {
- font-size: 3rem;
- font-weight: 700;
+    font-size: 3rem;
+    font-weight: 700;
 }
 
 h2 {
-  font-size: 2rem;
-  font-weight: 500;
+    font-size: 2rem;
+    font-weight: 500;
 }
 
 h3 {
-  font-size: 1.2rem;
-  font-weight: 500;
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 /** App Styles **/
 
 body {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .attribution {
-  margin-bottom: 5px;
-  font-size: 1rem;
+    margin-bottom: 5px;
+    font-size: 1rem;
 }
 
 .attribution a {
-  color: var(--text);
-  opacity: 0.3;
-  text-decoration: none;
+    color: var(--text);
+    opacity: 0.3;
+    text-decoration: none;
 }
 
 .app {
-  height: 90vh;
-  min-height: 600px;
-  max-height: 1200px;
-  width: var(--portrait-size);
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    height: 90vh;
+    min-height: 600px;
+    max-height: 1200px;
+    width: var(--portrait-size);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .app_coinsButton {
-  order: 2;
-  display: flex;
-  gap: var(--portrait-spacing);
-  margin-top: var(--portrait-spacing);
+    order: 2;
+    display: flex;
+    gap: var(--portrait-spacing);
+    margin-top: var(--portrait-spacing);
 }
 
 .app_coinsButton button {
-  width: calc((var(--portrait-size) - 4*var(--portrait-spacing)) / 5);
-  height: calc((var(--portrait-size) - 4*var(--portrait-spacing)) / 5);
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  background-image:
-        linear-gradient(to right, rgba(255,255,255,0.05), rgba(255,255,255,0.05)),
+    width: calc((var(--portrait-size) - 4 * var(--portrait-spacing)) / 5);
+    height: calc((var(--portrait-size) - 4 * var(--portrait-spacing)) / 5);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-image: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.05),
+            rgba(255, 255, 255, 0.05)
+        ),
         linear-gradient(to right, var(--background), var(--background));
-  border-radius: 10px;
+    border-radius: 10px;
 }
 
 .app_coinsButton button:hover {
-  background-image:
-        linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0.1)),
+    background-image: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0.1)
+        ),
         linear-gradient(to right, var(--background), var(--background));
 }
 
 .app_coinsButton button.active {
-  background-image: none;
-  background-color: var(--theme);
+    background-image: none;
+    background-color: var(--theme);
 }
 
 .app_coinsButton button svg {
-  width: 70%;
-  height: 70%;
+    width: 70%;
+    height: 70%;
 }
 
 .app_coinInfo {
-  width: 100%;
-  height: 100%;
-  background-image:
-        linear-gradient(to right, rgba(255,255,255,0.05), rgba(255,255,255,0.05)),
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.05),
+            rgba(255, 255, 255, 0.05)
+        ),
         linear-gradient(to right, var(--background), var(--background));
-  border-radius: 10px;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
+    border-radius: 10px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .app_coinInfo_title_meta {
-  font-size: 1rem;
-  display: flex;
-  gap: 1rem;
+    font-size: 1rem;
+    display: flex;
+    gap: 1rem;
 }
 
 .app_coinInfo_title_meta_update {
-  opacity: .5;
-} 
+    opacity: 0.5;
+}
 
 .app_coinInfo_market {
-  margin-top: 2rem;
+    margin-top: 2rem;
 }
 
 .app_coinInfo_market_trends {
-  font-size: 1rem;
-  display: flex;
-  gap: 1rem;
+    font-size: 1rem;
+    display: flex;
+    gap: 1rem;
 }
 
 .app_coinInfo_market_trends_trend {
-  display: flex;
-  gap: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
 }
 
 .app_coinInfo_market_trends_trend_perf.negative {
-  color: var(--negative);
+    color: var(--negative);
 }
 
 .app_coinInfo_market_trends_trend_perf.positive {
-  color: var(--positive);
+    color: var(--positive);
 }
 
 .app_coinInfo_market_trends_trend_perf.positive svg {
-  transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 
 .app_coinInfo_market_trends_trend_time {
-  opacity: .5;
+    opacity: 0.5;
 }
 
 .app_coinInfo_history {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .app_coinInfo_history_graph {
-  background-color: var(--background);
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  margin-top: .5rem;
-  padding: 1rem;
+    background-color: var(--background);
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    margin-top: 0.5rem;
+    padding: 1rem;
 }
 
 .app_coinInfo_history_graph canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 @media (orientation: landscape) {
-  .app {
-    width: 90vw;
-    min-width: 600px;
-    max-width: 1200px;
-    height: var(--landscape-size);
-    min-height: auto;
-    max-height: none;
-    flex-direction: row;
-    justify-content: flex-start;
-  }
+    .app {
+        width: 90vw;
+        min-width: 600px;
+        max-width: 1200px;
+        height: var(--landscape-size);
+        min-height: auto;
+        max-height: none;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
 
-  .app_coinsButton {
-    order: 0;
-    flex-direction: column;
-    margin-top: 0;
-    margin-right: var(--landscape-spacing);
-    gap: var(--landscape-spacing);
-  }
+    .app_coinsButton {
+        order: 0;
+        flex-direction: column;
+        margin-top: 0;
+        margin-right: var(--landscape-spacing);
+        gap: var(--landscape-spacing);
+    }
 
-  .app_coinsButton button {
-    width: calc((var(--landscape-size) - 4*var(--landscape-spacing)) / 5);
-    height: calc((var(--landscape-size) - 4*var(--landscape-spacing)) / 5);
-  }
+    .app_coinsButton button {
+        width: calc((var(--landscape-size) - 4 * var(--landscape-spacing)) / 5);
+        height: calc(
+            (var(--landscape-size) - 4 * var(--landscape-spacing)) / 5
+        );
+    }
 }
 
 @media (min-width: 100px) {
-  :root {
-    font-size: 16px;
-  }
+    :root {
+        font-size: 16px;
+    }
 }
