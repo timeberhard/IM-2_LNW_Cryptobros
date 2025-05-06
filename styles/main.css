@@ -150,15 +150,15 @@ body {
   gap: 0.5rem;
 }
 
-.app_coinInfo_market_trends_trend.negative .app_coinInfo_market_trends_trend_perf {
+.app_coinInfo_market_trends_trend_perf.negative {
   color: var(--negative);
 }
 
-.app_coinInfo_market_trends_trend.positive .app_coinInfo_market_trends_trend_perf {
+.app_coinInfo_market_trends_trend_perf.positive {
   color: var(--positive);
 }
 
-.app_coinInfo_market_trends_trend.positive .app_coinInfo_market_trends_trend_perf svg {
+.app_coinInfo_market_trends_trend_perf.positive svg {
   transform: rotate(180deg);
 }
 
