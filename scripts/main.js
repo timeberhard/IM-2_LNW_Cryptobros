@@ -75,12 +75,16 @@ function init() {
             document
                 .querySelector('.app_coinsButton button#' + coinButton.id)
                 .classList.add('active')
-            await displayCoinById(coinButton.id)
+            await Promise.all([
+                displayCoinById(coinButton.id),
+                displayChartById(coinButton.id),
+            ])
         })
         coinsButtonContainer.appendChild(coinButton)
     })
 
     displayCoinById(defaultCoin)
+    displayChartById(defaultCoin)
 }
 
 async function displayCoinById(id) {
