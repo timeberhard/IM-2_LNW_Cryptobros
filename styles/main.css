@@ -225,7 +225,7 @@ body {
     }
 }
 
-@media (min-width: 100px) {
+@media (min-width: 1000px) {
     :root {
         font-size: 16px;
     }
