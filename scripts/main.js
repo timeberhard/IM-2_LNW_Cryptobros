@@ -59,7 +59,15 @@ const coins = [
 const defaultCoin = 'bitcoin'
 
 function init() {
+    initCoinButtons()
+
+    displayCoinById(defaultCoin)
+    displayChartById(defaultCoin)
+}
+
+function initCoinButtons() {
     const coinsButtonContainer = document.querySelector('.app_coinsButton')
+
     coins.forEach((coin) => {
         const coinButton = document.createElement('button')
         coinButton.setAttribute('id', coin.id)
@@ -82,9 +90,6 @@ function init() {
         })
         coinsButtonContainer.appendChild(coinButton)
     })
-
-    displayCoinById(defaultCoin)
-    displayChartById(defaultCoin)
 }
 
 async function displayCoinById(id) {
