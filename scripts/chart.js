@@ -3,8 +3,10 @@ const parent = canvas.parentElement
 
 function resizeCanvas() {
     // Match canvas resolution to its displayed size
-    canvas.width = parent.clientWidth
-    canvas.height = parent.clientHeight
+    const padding =
+        2 * parseFloat(getComputedStyle(document.documentElement).fontSize)
+    canvas.width = parent.clientWidth - padding
+    canvas.height = parent.clientHeight - padding
 }
 
 resizeCanvas()
