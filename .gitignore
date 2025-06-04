@@ -1,0 +1,32 @@
+# Node modules
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Env files
+.env
+.env.*
+.dev.vars
+
+# Wrangler cache
+.wrangler/
+wrangler.toml.local
+
+# Build output (if any)
+dist/
+build/
+output/
+
+# Vite or other bundlers
+.vite/
+
+# Optional IDE stuff
+.vscode/
+.idea/
