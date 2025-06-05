@@ -1,3 +1,6 @@
+// const API_BASE_DOMAIN = 'https://api.coingecko.com/'
+const API_BASE_DOMAIN = '/'
+
 const coins = [
     {
         id: 'bitcoin',
@@ -144,7 +147,7 @@ function formatTimeAgo(dateString) {
 }
 
 async function loadCoin(id) {
-    const url = 'https://api.coingecko.com/api/v3/coins/' + id
+    const url = API_BASE_DOMAIN + 'api/v3/coins/' + id
     try {
         // load data from api
         const response = await fetch(url)

@@ -164,7 +164,8 @@ async function displayChartById(id) {
 async function loadChart(id) {
     try {
         const url =
-            'https://api.coingecko.com/api/v3/coins/' +
+            API_BASE_DOMAIN +
+            'api/v3/coins/' +
             id +
             '/market_chart?vs_currency=chf&days=7&interval=daily'
 
