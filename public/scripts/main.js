@@ -1,6 +1,8 @@
 // const API_BASE_DOMAIN = 'https://api.coingecko.com/'
+// Basis-URL für API-Anfragen (lokal oder extern)
 const API_BASE_DOMAIN = '/'
 
+// Icons
 const coins = [
     {
         id: 'bitcoin',
@@ -59,8 +61,11 @@ const coins = [
     },
 ]
 
+
+// Standard-Coin, der beim Start angezeigt wird
 const defaultCoin = 'bitcoin'
 
+// Initialisierungs-Function: Buttons und Standarddaten anzeigen
 function init() {
     initCoinButtons()
 
@@ -68,17 +73,20 @@ function init() {
     displayChartById(defaultCoin)
 }
 
+// Erstellt die Coin-Auswahl-Buttons und setzt Event-Listener
 function initCoinButtons() {
     const coinsButtonContainer = document.querySelector('.app_coinsButton')
 
     coins.forEach((coin) => {
         const coinButton = document.createElement('button')
+        // Button-Attribute und Icon
         coinButton.setAttribute('id', coin.id)
         coinButton.setAttribute('title', coin.name)
         coinButton.setAttribute('style', '--theme: ' + coin.color)
         if (defaultCoin === coin.id) coinButton.classList.add('active')
         coinButton.innerHTML = coin.icon
 
+        // Click-Event: Coin wechseln und Daten neu laden
         coinButton.addEventListener('click', async () => {
             document
                 .querySelector('.app_coinsButton button.active')
@@ -95,21 +103,26 @@ function initCoinButtons() {
     })
 }
 
+// Anzeige der Coin-Infos
 async function displayCoinById(id) {
     const data = await loadCoin(id)
     if (data === false) {
         return
     }
 
+// Setze die Coin-Infos im HTML
+    // Titel, Ticker und Aktualisierungszeit
     document.querySelector('.app_coinInfo_title h1').textContent = data.name
     document.querySelector('.app_coinInfo_title_meta_ticker').textContent =
         '$' + data.ticker.toUpperCase()
     document.querySelector('.app_coinInfo_title_meta_update').textContent =
         data.lastUpdate
 
+    // Preis anzeigen
     document.querySelector('.app_coinInfo_market h2').textContent =
         'CHF ' + data.price.toLocaleString('de-ch')
 
+    // Preisänderung 24h farblich markieren und anzeigen
     if (data.priceChange24h >= 0) {
         document.querySelector('#coinPerf24h').classList.add('positive')
         document.querySelector('#coinPerf24h').classList.remove('negative')
@@ -121,6 +134,7 @@ async function displayCoinById(id) {
     document.querySelector('#coinPerf24h span').textContent =
         data.priceChange24h.toFixed(2) + '%'
 
+    // Preisänderung 7d farblich markieren und anzeigen
     if (data.priceChange7d >= 0) {
         document.querySelector('#coinPerf7d').classList.add('positive')
         document.querySelector('#coinPerf7d').classList.remove('negative')
@@ -133,10 +147,11 @@ async function displayCoinById(id) {
         data.priceChange7d.toFixed(2) + '%'
 }
 
+// Formatiert das Datum der letzten Aktualisierung als "vor X Minuten/Stunden"
 function formatTimeAgo(dateString) {
     const date = new Date(dateString)
     const now = new Date()
-    const diff = Math.floor((now - date) / 1000) // difference in seconds
+    const diff = Math.floor((now - date) / 1000) // Unterschied in Sekunden
 
     if (diff < 60) return `Updated ${diff}s ago`
     if (diff < 3600) return `Updated ${Math.floor(diff / 60)}m ago`
@@ -146,6 +161,7 @@ function formatTimeAgo(dateString) {
     return `Updated ${Math.floor(diff / 31536000)}y ago`
 }
 
+// Holt die Coin-Daten von der API und bereitet sie auf
 async function loadCoin(id) {
     const url = API_BASE_DOMAIN + 'api/v3/coins/' + id
     try {
@@ -168,4 +184,5 @@ async function loadCoin(id) {
     }
 }
 
+// Startet die App beim Laden der Seite
 init()

@@ -29,6 +29,7 @@ export async function onRequestGet(context) {
                 'Cache-Control': 'public, max-age=60',
             },
         })
+        // Error handling
     } catch (err) {
         return new Response(
             JSON.stringify({

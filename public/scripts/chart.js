@@ -2,18 +2,21 @@ const canvas = document.querySelector('#coinPerfChart')
 const parent = canvas.parentElement
 
 function resizeCanvas() {
-    // Match canvas resolution to its displayed size
+    // Stimmt die Canvas-Auflösung mit der angezeigten Größe ab
     const padding =
         2 * parseFloat(getComputedStyle(document.documentElement).fontSize)
     canvas.width = parent.clientWidth - padding
     canvas.height = parent.clientHeight - padding
 }
 
+// Canvas initial und bei Fenstergröße anpassen
 resizeCanvas()
 window.addEventListener('resize', resizeCanvas)
 
+// 2D-Kontext für das Chart holen
 const ctx = canvas.getContext('2d')
 
+// Chart.js Datenstruktur vorbereiten
 const data = {
     labels: [],
     datasets: [
@@ -30,6 +33,7 @@ const data = {
     ],
 }
 
+// Plugin für runde Linienenden im Chart-Grid
 const gridLineCapPlugin = {
     id: 'gridLineCapPlugin',
     beforeDraw(chart) {
@@ -44,12 +48,14 @@ const gridLineCapPlugin = {
 }
 Chart.register(gridLineCapPlugin)
 
-// Chart Configuration
+// Chart-Konfiguration
 Chart.defaults.color = '#ffffff'
 Chart.defaults.font = {
     family: "'Inter', sans-serif",
     size: 14,
 }
+
+// Chart-Konfiguration (Typ, Optionen, Achsen, Animationen)
 const config = {
     type: 'line',
     data: data,
@@ -128,18 +134,21 @@ const config = {
     },
 }
 
-// Create the Chart
+// Create Chart
 const coinPerfChart = new Chart(ctx, config)
 
+// Show  chart for a specific coin
 async function displayChartById(id) {
     const data = await loadChart(id)
     if (data === false) {
         return
     }
 
+    // Replace the chart data & labels
     coinPerfChart.data.labels = data.chartLabels
     coinPerfChart.data.datasets[0].data = data.chartData
 
+    // Set color based on performance (green/red)
     if (data.chartData[0] > data.chartData[data.chartData.length - 1]) {
         coinPerfChart.data.datasets[0].borderColor = 'rgba(255,0,0,0.5)'
         coinPerfChart.data.datasets[0].backgroundColor = utilGradient([
@@ -152,15 +161,17 @@ async function displayChartById(id) {
         ])
     }
 
+    // Update Y-Axis dynamically
     const frame = utilFrameData(data.chartData)
     config.options.scales.y.min = frame.lowerBound
     config.options.scales.y.max = frame.upperBound
     config.options.scales.y.ticks.stepSize = frame.adjustedStep
 
-    // Update the chart with the new data and configuration
+    // Update the chart with new data and configuration
     coinPerfChart.update()
 }
 
+// Get Chart-Data from API and prepare
 async function loadChart(id) {
     try {
         const url =
@@ -174,6 +185,7 @@ async function loadChart(id) {
 
         delete data.prices[data.prices.length - 2]
 
+        // Extract chart data & labels
         const [chartData, chartLabels] = data.prices.reduce(
             ([chartData, chartLabels], prices) => {
                 chartData.push(prices[1])
@@ -198,6 +210,7 @@ async function loadChart(id) {
     }
 }
 
+// Vertical gradient
 function utilGradient(rgb_color = [0, 0, 0]) {
     const gradient = ctx.createLinearGradient(
         0,
@@ -211,6 +224,7 @@ function utilGradient(rgb_color = [0, 0, 0]) {
     return gradient
 }
 
+// Berechnet sinnvolle Y-Achsen-Grenzen und Schrittweite
 function utilFrameData(data, marginRatio = 0.02) {
     const min = Math.min(...data)
     const max = Math.max(...data)
@@ -230,15 +244,15 @@ function utilFrameData(data, marginRatio = 0.02) {
     const paddedMin = min - range * marginRatio
     const paddedMax = max + range * marginRatio
 
-    // Compute nice step
+    // Schrittweite berechnen
     const rawStep = (paddedMax - paddedMin) / 4
     const step = utilNiceStepSize(rawStep)
 
-    // Adjust bounds (important fix!)
+    // Achsen-Grenzen anpassen (important fix!)
     const lowerBound = Math.floor(paddedMin / step) * step
     const upperBound = Math.ceil(paddedMax / step) * step
 
-    // Recompute step in case upperBound - lowerBound > 4 steps
+    // Schrittweite ggf. anpassen
     const adjustedStep = (upperBound - lowerBound) / 4
 
     return {
@@ -248,6 +262,7 @@ function utilFrameData(data, marginRatio = 0.02) {
     }
 }
 
+// Sorgt für "schöne" Schrittweiten auf Y-Achse (1, 2, 2.5, 5, 10, ...)
 function utilNiceStepSize(rawStep) {
     const exponent = Math.floor(Math.log10(rawStep))
     const base = Math.pow(10, exponent)
@@ -269,6 +284,7 @@ function utilNiceStepSize(rawStep) {
     return niceFraction * base
 }
 
+// Interpolates two colors
 function utilInterpolateColor(color1, color2, factor = 0.5) {
     const c1 = utilParseColor(color1)
     const c2 = utilParseColor(color2)

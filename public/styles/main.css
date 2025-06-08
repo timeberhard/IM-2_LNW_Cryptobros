@@ -197,6 +197,8 @@ body {
     height: 100%;
 }
 
+/** Media Queries **/
+
 @media (orientation: landscape) {
     .app {
         width: 90vw;
