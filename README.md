@@ -10,6 +10,10 @@ Unsere Krypto-Tracking-App zeigt die Echtzeitpreise der wichtigsten Kryptowähru
 >
 > -- <cite>Luc Guerraz</cite>
 
+> Die Arbeit mit ChatGPT machte die Arbeit effizienter. Allerdings war der Code tw. sehr komplex zB. bei grossen Elementen. Die Anwendung funktioniert einiges einfacher, bei vielen kleinen “Bausteinen” die man selbst zusammensetzt.
+>
+> -- <cite>Tim Eberhard</cite>
+
 ## Benutzte Ressourcen und Prompts
 
 ChatGPT kam zum Einsatz, unter anderem mit folgenden Prompts:
